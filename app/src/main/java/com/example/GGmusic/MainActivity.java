@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final String[] SELECTION_ARGS = {
             Integer.toString(1),
             "audio/mpeg"
-    };
+    };//数组
     private BottomNavigationView navigation;
     private TextView tvBottomTitle;
     private TextView tvBottomArtist;
