@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView ivAlbumThumbnail;
     private ImageView ivPlay;
     private MediaPlayer mMediaPlayer = null;
-    private  ListView.OnItemClickListener itemClickListener
+    private  ListView.OnItemClickListener itemClickListener//sadsasad
             = new ListView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView,
