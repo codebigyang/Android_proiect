@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String data = cursor.getString(dataIndex);
                 Uri dataUri = Uri.parse(data);
 
-                Intent serviceIntent=new Intent(MainActivity.this,MusicService.class);
+                Intent serviceIntent=new Intent(MainActivity.this,MusicService.class);//以下四行代码是利用服务的方式
                 serviceIntent.putExtra(MainActivity.DATA_URL,data);
                 serviceIntent.putExtra(MainActivity.TITLE,title);
                 serviceIntent.putExtra(MainActivity.ARTIST,artist);
