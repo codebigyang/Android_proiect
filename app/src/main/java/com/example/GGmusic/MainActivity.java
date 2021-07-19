@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.media.MediaPlayer;
@@ -29,6 +30,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {//主函数
+
     private static final String TAG="MainActivity";
     private Cursor mCursor;
     private final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView ivAlbumThumbnail;
     private ImageView ivPlay;
     private MediaPlayer mMediaPlayer = null;
+    public final static String  DATA_URL="URL";
+    public final static String TITLE="com.project.weijieyang.GGmusic.TITLE";
+    public final static String ARTIST="com.project.weijieyang.GGmusic.ARTIST";
     private  ListView.OnItemClickListener itemClickListener//sadsasad
             = new ListView.OnItemClickListener() {
         @Override
@@ -76,17 +81,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String data = cursor.getString(dataIndex);
                 Uri dataUri = Uri.parse(data);
 
-                if (mMediaPlayer != null) {
-                    try {
-                        mMediaPlayer.reset();
-                        mMediaPlayer.setDataSource(
-                                MainActivity.this, dataUri);
-                        mMediaPlayer.prepare();
-                        mMediaPlayer.start();
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                }
+                Intent serviceIntent=new Intent(MainActivity.this,MusicService.class);
+                serviceIntent.putExtra(MainActivity.DATA_URL,data);
+                serviceIntent.putExtra(MainActivity.TITLE,title);
+                serviceIntent.putExtra(MainActivity.ARTIST,artist);
+                startService(serviceIntent);
                 navigation.setVisibility(View.VISIBLE);
 
                 if (tvBottomTitle != null) {
