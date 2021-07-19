@@ -28,7 +28,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {//主函数
     private static final String TAG="MainActivity";
     private Cursor mCursor;
     private final int REQUEST_EXTERNAL_STORAGE = 1;
